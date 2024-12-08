@@ -25,31 +25,29 @@
   function transHTML() {
     var str = document.querySelector("#text").value;
     //var str ='< img class  =  "this is  picture"  style  =  "background-color: aliceblue; "   alt =  "图片" src="https://img0.baidu.com/it/u=2931243091,718249849&fm=253&fmt=auto&app=120&f=JPEG?w=569&h=427" >';
-    // 移除img空格
-    str = str.replace(/<(\s+)/, "<");
+    // 移除<后的空格
+    str = str.replace(/<\s+/g, "<");
     console.log(str);
 
-    // 创建img元素节点
+    // 创建元素节点
     var div = document.querySelector("#d");
     div.innerHTML = str;
 
-    var result = [];
+    var result = {};
     var attrArr = [];
-    var valueArr = [];
+    var valueArr = {};
 
     // 获取img DOM对象
     var childrenArr = div.children[0];
-    result.push({ tagName: childrenArr.tagName });
-
+    result.tagName = childrenArr.tagName
     // 获取img标签的属性
     var attrArr = childrenArr.getAttributeNames();
     for (var i = 0; i < attrArr.length; i++) {
-      valueArr.push({
-        [attrArr[i]]: childrenArr.getAttribute(attrArr[i]),
-      });
+      let attr = attrArr[i];
+      valueArr[attr]= childrenArr.getAttribute(attr)
     }
-    result.push(valueArr);
-    console.log(result);
+    result.attrs = valueArr;
+    console.dir(result)
   }
 </script>
 <style>
