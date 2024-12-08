@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en" style="height: 100%;">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="./common.js"></script>
+  <title>base编码与解码</title>
+</head>
+
+<body>
+  <div style="height: 50px">
+    <p><label>BaseX 编 码 与 解 码</label></p>
+  </div>
+  <div style="margin-top: 20px;">
+    <textarea id="text" placeholder="请输入要编码/解码的字符串"></textarea>
+  </div>
+  <div style="margin-top: 15px; margin-left: -120px; gap: 10px;">
+    <label>请选择编码格式:</label>
+    <select id="codeSelect">
+      <option value="16">Base16</option>
+      <option value="32">Base32</option>
+      <option value="64">Base64</option>
+    </select>
+    <div></div>
+    <button onclick="coding()">编码</button>
+    <button onclick="decoding()">解码</button>
+  </div>
+  <div style="margin-top: 20px;">
+    <textarea id="answer"></textarea>
+  </div>
+</body>
+
+<script>
+  function coding() {
+    console.log("----开始编码----")
+    var textData = document.querySelector("#text").value;
+    var type = document.querySelector("#codeSelect").value;
+    document.querySelector("#answer").innerText = BaseXcode(textData, type);
+  }
+
+  function decoding() {
+    console.log("----开始解码----")
+    var textData = document.querySelector("#text").value;
+    var type = document.querySelector("#codeSelect").value;
+    document.querySelector("#answer").innerText = enBaseXCode(textData, type);
+  }
+</script>
+<style>
+  div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  textarea {
+    width: 520px;
+    height: 220px;
+    border: 1px solid #8c8c90;
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 16px;
+    resize: none;   /* 禁止修改大小 */
+  }
+
+  /* 当 textarea 获得焦点时的样式 */
+  textarea:focus {
+    outline: none;
+    border-color: #007BFF;
+    /* 点击时边框颜色变亮 */
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+    /* 添加轻微的阴影效果 */
+  }
+
+  p {
+    text-align: center;
+    font-size: 42px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    color: rgb(225, 32, 32);
+  }
+</style>
+
+</html>
