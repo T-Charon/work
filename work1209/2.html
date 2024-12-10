@@ -44,12 +44,18 @@
         redLength ++;
       }
     }
-    switch (true) {
-      case redLength === 5:
+    switch (redLength) {
+      case 5:
         str  = "你真的太棒啦！"
         break;
-      case redLength <= 4 && redLength >=2:
+      case 4:
+        str  = "加油，争取做到完美！"
+        break;
+      case 3:
         str  = "革命尚未成功，同志仍需努力！"
+        break;
+      case 2:
+        str  = "你今天努力了吗？"
         break;
       default:
         str  = "菜就多练...."

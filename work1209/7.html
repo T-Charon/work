@@ -92,8 +92,25 @@
     /* 左右对齐 */
     align-items: center;
     /* 垂直居中 */
-    border-bottom: 2px solid red
-    
+    position: relative;
+    /* 使伪元素相对于 li 定位 */
+  }
+
+  /* 创建自定义长度的下边框 */
+  li::before {
+    content: '';
+    /* 必须有内容才能显示伪元素 */
+    position: absolute;
+    bottom: 0;
+    /* 边框位于 li 的底部 */
+    left: 50px;
+    /* 从左侧开始 */
+    width: 350px;
+    /* 设置边框的长度 */
+    height: 3px;
+    /* 设置边框的高度 */
+    background-color: red;
+    /* 设置边框的颜色 */
   }
 
   .deleteOne {
