@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div class="contains">
+    <form action="#">
+      <input class="id" type="text" placeholder="邮箱/ID/手机号">
+      <input class="pwd" type="password" placeholder="密码">
+      <input  type="submit" value="登录">
+    </form>
+  </div>
+
+</body>
+<script>
+  var id = document.querySelector(".id");
+  var pwd = document.querySelector(".pwd");
+  id.onclick = function () {
+    id.placeholder = "";
+    id.style = "border:1px solid pink;"
+  }
+
+  id.onblur = function () {
+    id.placeholder = "邮箱/ID/手机号";
+    id.style = "border:1px solid black;"
+  }
+
+  pwd.onclick = function () {
+    pwd.placeholder = "";
+    pwd.style = "border:1px solid pink;"
+  }
+
+  pwd.onblur = function () {
+    pwd.placeholder = "密码";
+    pwd.style = "border:1px solid black;"
+  }
+
+</script>
+<style>
+  .contains {
+    margin-top: 50px;
+    display: flex;
+    color: #aaa;
+    justify-content: center;
+  }
+  .contains form input {
+    outline: none;
+  }
+</style>
+
+</html>

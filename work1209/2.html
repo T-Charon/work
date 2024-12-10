@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" style="width: 100%;">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>循环创建N颗♥</title>
+</head>
+<body>
+</body>
+<script>
+  // 创建爱心
+  var div = document.createElement('div');
+  div.setAttribute('class',"a")
+  document.querySelector("body").appendChild(div)
+  div.style.display = "flex";
+  for(var i = 0; i< 5; i++){
+    var a = document.createElement('div');
+    a.innerText = "♥ ";
+    a.style.width = "50px";
+    a.style.fontSize = "60px";
+    a.setAttribute("class","red");
+    a.setAttribute("id",i);
+    document.querySelector(".a").appendChild(a)
+  }
+  var lable = document.querySelector("body").appendChild(document.createElement("lable"));
+  lable.style.textAlign = "center";
+  lable.style.display = "block";
+    // 添加事件
+  div.addEventListener('click',function (e) {
+    var str ="";
+    var click = document.querySelectorAll('.red')
+    var redLength = 0;
+    if(e.target.className === 'red' ){
+      
+      var index = e.target.id;
+      for (var i = 0;i<5;i++ ) {
+        var b = document.getElementById(i);
+        if(index < i){
+          // 左边变红 右边变黑
+          b.style.color = "black";
+          continue;
+        }
+        b.style.color = "red";
+        redLength ++;
+      }
+    }
+    switch (true) {
+      case redLength === 5:
+        str  = "你真的太棒啦！"
+        break;
+      case redLength <= 4 && redLength >=2:
+        str  = "革命尚未成功，同志仍需努力！"
+        break;
+      default:
+        str  = "菜就多练...."
+        break;
+    }
+   
+    lable.innerText = str
+
+  })
+
+</script>
+<style>
+  div {
+    width: 100%;
+    display: flex;
+    justify-content: center; 
+    gap:10px;
+    margin-top: 50px;
+  }
+</style>
+</html>
