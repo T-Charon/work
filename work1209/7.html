@@ -30,6 +30,10 @@
   add.addEventListener('click', function () {
     var content = document.querySelector(".content");
     var meaasge = document.querySelector(".message");
+    if(meaasge.value.trim()=== ""){
+      alert("不要输入空留言....")
+      return;
+    }
     var button = document.createElement('button');
     button.setAttribute('class', 'deleteOne')
     button.innerHTML = "删除"
