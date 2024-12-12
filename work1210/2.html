@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" style="width: 100%;height: 100%;">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>输入数字</title>
+</head>
+
+<body style="width: 100%;height: 100%;">
+  <div>
+    <input type="text" class="text" placeholder="请输入数值"></input>
+  </div>
+  
+</body>
+<script>
+  document.body.addEventListener('click', function (e) {
+    if (e.target.className != 'text') {
+      var text = document.querySelector('.text');
+      const num = text.value;
+      let i = 0;
+      window.timeId = setInterval(function () {
+        // 计算剩余的差值
+        const remaining = num - i;
+        // 如果剩余的差值小于等于 50，则使用剩余的差值作为增量
+        const increment = remaining <= 50 ? remaining : Math.floor(Math.random() * 51);
+        i += increment;
+        text.value = `${i}`;
+        if (i >= num) {
+          clearInterval(window.timeId);
+          text.value = num; // 确保最终值不超过 num
+        }
+      }, 170);
+    }
+  })
+
+</script>
+<style>
+  div {
+    justify-content: center;
+    display: flex;
+    width: 200px;
+    height: 100px;
+  }
+</style>
+</html>
