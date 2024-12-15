@@ -37,7 +37,7 @@ body {
   height: 70px;
   margin-left: 10px;
   margin-right: 10px;
-  margin-top: 5px;
+  margin-top: 20px;
 }
 .calendar_bar_check_pre,
 .calendar_bar_date,
@@ -92,17 +92,19 @@ body {
   position: relative;
   top: 10px;
   font-size: 18px;
+  color: #555;
 }
 
 .calendar_body {
   height: 360px;
-  width: 400px;
+  width: 385px;
   position: relative;
   display: flex;
   flex-wrap: wrap;
   top: 20px;
   text-align: center;
   z-index: 2;
+  margin-left: 7px;
 }
 .calendar_body::after {
   content: var(--month);
