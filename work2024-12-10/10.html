@@ -1,0 +1,128 @@
+<!DOCTYPE html class="light">
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>旋转按钮切换背景</title>
+</head>
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+  }
+  .dark body {
+    background-color: black;
+  }
+  .dark .msg {
+    color: white;
+  }
+  .light .msg {
+    color: black;
+  }
+
+  .box {
+    width: 100vw;
+    height: 100px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+}
+  
+  .box_src {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .circle {
+    z-index: 2;
+    width: 50px;
+    height: 50px;
+    border-radius: 100%;
+    background-color: #333;
+    position: relative;
+  }
+
+  .circle::after{
+    position: absolute;
+    content: "";
+    z-index: 3;
+    width: 35px;
+    height: 35px;
+    border-radius: 100%;
+    background-color: E6E6E6;
+    left: 7.5px;
+    top: 7.5px;
+  }
+
+  .b {
+    position: absolute;
+    width: 100px;
+    height: 100px
+  }
+
+  #box_checkBox:checked ~.box_lable > .box_src>.b {
+    transform: rotate(180deg); 
+    transition: transform 0.3s ease; 
+  }
+
+  #box_checkBox:not(:checked) ~.box_lable > .box_src>.b {
+    transform: rotate(360deg); 
+    transition: transform 0.3s ease; 
+  }
+
+  #box_checkBox:checked ~.box_lable > .box_src>.circle::after {
+    transform: translate(5px,-5px);
+    transition: all 0.5s ease-in-out;
+    width: 40px;
+    height: 40px;
+    top: 1px;
+  }
+  #box_checkBox:not(:checked) ~.box_lable > .box_src>.circle::after {
+    transition: all 0.5s ease-in-out; 
+  }
+
+  #box_checkBox{
+    display: none;
+  }
+  .msg {
+    position: relative;
+    text-align: center;
+    font-size: 20px;
+  }
+
+</style>
+<body>
+  <div>
+    <div class="box">
+      <input type="checkbox" id="box_checkBox">
+      <label for="box_checkBox" class="box_lable">
+        <div class="box_src"> 
+          <img src="./img/八角星-填色.png"  class="b">
+          <div class="circle"></div>
+        </div>
+        
+      </label>
+     
+  </div>
+  <div class="msg"> JaveScript</div>
+  </div>
+  
+ 
+ 
+  
+</body>
+<script>
+  var checkBox = document.querySelector('#box_checkBox');
+  checkBox.onchange = function () {
+    console.log(this.checked)
+    document.documentElement.setAttribute('class',this.checked? 'dark' : 'light')
+  }
+</script>
+
+</html>
