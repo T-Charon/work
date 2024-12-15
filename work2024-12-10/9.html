@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en" class="light">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>点击按钮切换背景</title>
+</head>
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+  }
+  html body {
+    width: 100vw;
+    height: 100vh;
+  }
+  .dark body {
+      background-color: black;
+      transition: ease-in 300ms;
+    }
+
+    .light body {
+      background-color: white;
+    }
+
+    .dark .msg {
+      color: white;
+    }
+
+    .light .msg {
+      color: black;
+    }
+    .switch {
+    height: 200px;
+    width: 200px;
+    display: flex;
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    gap: 10px;
+  }
+
+  .switch-main {
+    display: flex;
+    align-items: center;
+    width: 70px;
+    height: 30px;
+    border-radius: 25px;
+    border: 4px solid blueviolet;
+  }
+
+  .switch-inner {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    margin-left: 5px;
+    background-color: blueviolet;
+    position: relative;
+
+  }
+
+  .switch-inner::after {
+    content: '';
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: blueviolet;
+    transform: translateX(0);
+    transition: all ease 100ms;
+  }
+  #switch-checkbox {
+    display: none;
+  }
+
+  #switch-checkbox:checked~.switch-main>.switch-inner {
+    transform: translateX(40px);
+  }
+
+  #switch-checkbox:checked~.switch-main>.switch-inner::after {
+    background-color: black;
+    transform: translateX(-10px);
+  }
+  
+  .msg {
+    font-size: 25px;
+  }
+  
+</style>
+
+<body>
+  <div class="switch" >
+    <div class="msg">Mancuoj</div>
+    <div>
+      <input type="checkbox" id="switch-checkbox">
+      <label class="switch-main" for="switch-checkbox">
+        <div class="switch-inner"></div>
+      </label>
+    </div>
+   
+  </div>
+
+</body>
+<script>
+  var checkBox = document.querySelector('#switch-checkbox');
+  checkBox.onchange = function () {
+    console.log(this.checked)
+    document.documentElement.setAttribute('class',this.checked? 'dark' : 'light')
+  }
+
+</script>
+
+</html>
