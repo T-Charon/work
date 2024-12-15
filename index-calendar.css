@@ -3,8 +3,8 @@
   inherits: true;
   initial-value: 0;
 }
-:root{
-  --month:12;
+:root {
+  --month: 12;
 }
 
 * {
@@ -39,28 +39,30 @@ body {
   margin-right: 10px;
   margin-top: 5px;
 }
-.calendar_bar_check_pre ,.calendar_bar_date ,.calendar_bar_check_next{
+.calendar_bar_check_pre,
+.calendar_bar_date,
+.calendar_bar_check_next {
   position: relative;
   border-radius: 10px;
-  text-align: center ;
+  text-align: center;
   line-height: 40px;
   color: rgb(245, 156, 171);
   font-weight: bold;
 }
 
-.calendar_bar_check_pre{
+.calendar_bar_check_pre {
   background-color: rgb(228, 213, 213);
   top: 10px;
   width: 50px;
   height: 40px;
   cursor: pointer;
 }
-.calendar_bar_check_pre:active{
-  background-color: #e9f4e9; 
-  user-select: none;   /*禁止选择元素中的文本 */
+.calendar_bar_check_pre:active {
+  background-color: #e9f4e9;
+  user-select: none; /*禁止选择元素中的文本 */
 }
-.calendar_bar_check_next:active{
-  background-color: #e9f4e9; 
+.calendar_bar_check_next:active {
+  background-color: #e9f4e9;
   user-select: none;
 }
 
@@ -103,19 +105,19 @@ body {
   z-index: 2;
 }
 .calendar_body::after {
-    content: var(--month);
-    position: absolute;
-    display: flex;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    width: 300px;
-    height: 300px;
-    z-index: -2;
-    font-size: 150px;
-    line-height: 300px;
-    justify-content: center;
-    opacity: 0.2;
+  content: var(--month);
+  position: absolute;
+  display: flex;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 300px;
+  height: 300px;
+  z-index: -2;
+  font-size: 150px;
+  line-height: 300px;
+  justify-content: center;
+  opacity: 0.2;
 }
 
 .calendar-date_base {
@@ -130,20 +132,67 @@ body {
 }
 
 .disabled {
+  position: relative;
   color: gray;
-  pointer-events: none;
-  cursor: not-allowed;  
+  cursor: not-allowed;
 }
 
-.calendar-date_base_canClick:hover{
+.disabled::after {
+  position: absolute;
+  content: "暂无作业";
+  width: 100px;
+  height: 25px;
+  background-color: #f7a9a9;
+  color: #fff;
+  text-align: center;
+  line-height: 25px;
+  border-radius: 10px;
+  top: 100%;
+  opacity: 0;
+  transition: all 0.5s ease-in-out;
+  visibility: hidden;
+}
+
+.disabled:hover::after {
+  visibility: visible; 
+  opacity: 0.8; 
+}
+
+.calendar-date_base_now_date_style {
+  color: rgb(246, 86, 113);
+  position: relative;
+  cursor:pointer;
+}
+
+.calendar-date_base_canClick {
+  position: relative;
+  cursor: pointer; 
+}
+
+.calendar-date_base_canClick:hover {
   color: white;
   background-color: rgb(239, 219, 219);
   cursor: pointer;
   border-radius: 55px;
 }
 
-.calendar-date_base_now_date_style {
-  color:rgb(246, 86, 113);
-  position: relative;
+.calendar-date_base_canClick::after {
+  position: absolute;
+  content: "点击查看作业";
+  width: 100px;
+  height: 25px;
+  background-color: #f7a9a9;
+  color: #fff;
+  text-align: center;
+  line-height: 25px;
+  border-radius: 10px;
+  top: 110%;
+  opacity: 0;
+  transition: all 0.5s ease-in-out;
+  visibility: hidden;
 }
 
+.calendar-date_base_canClick:hover::after {
+  visibility: visible; 
+  opacity: 0.8; 
+}
