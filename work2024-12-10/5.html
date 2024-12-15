@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" style="width: 100%;height: 100%;">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>使用setTimeout模拟setInterval</title>
+</head>
+<body style="width: 100%;height: 100%;">
+  <button>结束定时</button>
+</body>
+<script>
+  var timeId = 0;
+  function dingshiqi(fn,duration) {
+      timeId=setTimeout(function () {
+          fn();
+          dingshiqi(fn,duration);
+      },duration)
+  }
+
+  function fn() {
+    console.log("开启setTimeout")
+  }
+  function cleardingshiqi(ti) {
+      clearTimeout(ti);
+  }
+  dingshiqi(fn,1000);
+
+  document.querySelector("button").addEventListener("click",function () {
+      cleardingshiqi(timeId);
+      console.log("结束")
+  })
+</script>
+</html>
