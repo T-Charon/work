@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en" class="light">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>日月背景光按钮</title>
+  <style>
+    /* .box {
+      display: flex; 
+      justify-items: center;
+    }
+
+    .icon {
+      display: flex;
+      width: 70px;
+      height: 30px;
+      border: 3px solid #3a63ff;
+      border-radius: 25px;
+      padding: 1px;
+    }
+
+    .inner1 {
+      height: 30px;
+      width: 30px;
+      background-color: #4463fe;
+      border-radius: 100%;
+      left: 2px;
+      position: relative;
+      transition: ease, .3s;
+  }
+      /* 定义要过渡的属性 */
+
+  * {
+      margin: 0;
+      padding: 0;
+      font-size: 25px;
+    }
+
+
+    body {
+      width: 100vw;
+      height: 100vh;
+      position: fixed;
+
+    }
+
+    .dark body {
+      background-color: black;
+    }
+
+    .light body {
+      background-color: white;
+    }
+
+    .dark .msg {
+      color: white;
+    }
+
+    .light .msg {
+      color: black;
+    }
+
+    .switch-container {
+      cursor: pointer;
+
+    }
+
+    .switch-input {
+      display: none;
+    }
+
+    .switch-input:checked~.switch-main::after {
+      left: 50px;
+    }
+    .switch-main {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      width: 100px;
+      height: 50px;
+      border-radius: 25px;
+      border: 4px solid rgb(70, 70, 234);
+      position: relative;
+
+    }
+
+    .switch-main::after {
+      content: '';
+      display: inline-block;
+      width: 40px;
+      height: 40px;
+      border-radius: 25px;
+      background-color: rgb(70, 70, 234);
+      position: absolute;
+      left: 5px;
+      top: 5px;
+      transition: all ease-in-out 200ms;
+    }
+
+    .open {
+      color: white;
+      transition: all ease-in-out 1000ms;
+    }
+  </style>
+
+</head>
+
+<body>
+  <!-- <div class="box">
+    <div><span>JavaScript</span></div>
+    <div class="icon">
+      <div class="inner1"></div>
+    </div>
+  </div> -->
+  <div style="display: flex;justify-content: center; align-items: center;height: 100%; gap:20px"  >
+    <span class="msg">JaveScript</span>
+    <div class="switch-container">
+      <input type="checkbox" class="switch-input" id="switch-input">
+      <label  for="switch-input" class="switch-main">
+        <!-- <span class="open">开</span> -->
+        <img src="./img/sun.png" alt="" class="close" style=" position: relative; width: 35px;">
+        <img src="./img/下班.png" alt="" class="open" style=" position: relative;left: 2px">
+        
+        
+      </label>
+    </div>
+    
+  </div>
+  
+
+
+  <!-- <script>
+    var inner1 = document.querySelector(".inner1")
+    var flag = true;
+    inner1.addEventListener('click', function (e) {
+
+      if (flag) {
+        inner1.style.transform = `translateX(36px)`
+        document.body.style.backgroundColor = 'black'
+        flag = false;
+      } else {
+        inner1.style.transform = `translateX(0px)`
+        document.body.style.backgroundColor = 'white'
+        flag = true;
+      }
+      document.body.style.transition = 'background-color 0.5s'
+    })
+  </script> -->
+</body>
+<script>
+  var switchBot = document.querySelector('.switch-input')
+  switchBot.onchange = function () {
+    console.log("点击"+ this.checked + document.documentElement)
+    document.documentElement.setAttribute('class', this.checked ? 'dark' : 'light')
+  }
+</script>
+
+</html>
