@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en" style="height: 100%; width: 100%;">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>动态新增/删除留言</title>
+</head>
+
+<body>
+  <div class="box">
+    <div class="contains">
+      <textarea name="text" class="message"></textarea>
+      <button class="add">发布</button>
+      <button class="deleteAll">删除所有留言</button>
+    </div>
+    <div class="content">
+      <ul></ul>
+    </div>
+  </div>
+
+
+</body>
+
+<script>
+  var add = document.querySelector(".add");
+  var deleteaAll = document.querySelector(".deleteAll");
+  var ul = document.querySelector("ul");
+
+  add.addEventListener('click', function () {
+    var content = document.querySelector(".content");
+    var meaasge = document.querySelector(".message");
+    if(meaasge.value.trim()=== ""){
+      alert("不要输入空留言....")
+      return;
+    }
+    var button = document.createElement('button');
+    button.setAttribute('class', 'deleteOne')
+    button.innerHTML = "删除"
+    var li = document.createElement('li');
+    li.innerText = meaasge.value
+    meaasge.value = "";
+    li.appendChild(button)
+    ul.appendChild(li)
+  })
+
+  ul.addEventListener('click', function (e) {
+    if (e.target.className === 'deleteOne') {
+      e.target.parentNode.remove();
+    }
+  })
+
+  deleteaAll.addEventListener('click', function () {
+    ul.innerHTML = "";
+
+  })
+
+
+</script>
+<style>
+  .box {
+    width: 400px;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+  }
+
+  textarea {
+    width: 150px;
+    height: 150px;
+    resize: none;
+    border-color: #c0c2c5;
+  }
+
+  /* 当 textarea 获得焦点时的样式 */
+  textarea:focus {
+    outline: none;
+    border-color: pink;
+    box-shadow: 0 0 5px rgba(226, 106, 168, 0.5);
+  }
+
+  ul,li {
+    background: cadetblue;
+  }
+
+  ul {
+    margin: 0;
+  }
+
+  li {
+    padding-right: 10px;
+    height: 40px;
+    display: flex;
+    justify-content: space-between;
+    /* 左右对齐 */
+    align-items: center;
+    /* 垂直居中 */
+    position: relative;/* 使伪元素相对于 li 定位 */
+  }
+
+  /* 创建自定义长度的下边框 并且不为最后一个子节点时显示*/
+  li:not(:last-child)::before {
+    content: '';  /* 必须有内容才能显示伪元素 */
+    position: absolute;
+    bottom: 0;  /* 边框位于 li 的底部 */
+    width: 360px;  /* 设置边框的长度 */
+    height: 3px;  /* 设置边框的高度 */
+    background-color: red;  /* 设置边框的颜色 */
+  }
+
+  .deleteOne {
+    margin-left: auto;
+    /* 将按钮推到最右 */
+  }
+</style>
+
+</html>
