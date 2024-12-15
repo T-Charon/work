@@ -1,0 +1,19 @@
+<svg data-v-ffaeb18c="" aria-hidden="true" height="24" viewBox="0 0 24 24" width="24">
+  <mask data-v-ffaeb18c="" id="theme-toggle-moon" class="theme-toggle__moon" fill="hsl(var(--foreground)/80%)"
+    stroke="none">
+    <rect data-v-ffaeb18c="" fill="white" height="100%" width="100%" x="0" y="0"></rect>
+    <circle data-v-ffaeb18c="" cx="40" cy="8" fill="black" r="11"></circle>
+  </mask>
+  <circle data-v-ffaeb18c="" id="sun" class="theme-toggle__sun" cx="12" cy="12" mask="url(#theme-toggle-moon)" r="11">
+  </circle>
+  <g data-v-ffaeb18c="" class="theme-toggle__sun-beams">
+    <line data-v-ffaeb18c="" x1="12" x2="12" y1="1" y2="3"></line>
+    <line data-v-ffaeb18c="" x1="12" x2="12" y1="21" y2="23"></line>
+    <line data-v-ffaeb18c="" x1="4.22" x2="5.64" y1="4.22" y2="5.64"></line>
+    <line data-v-ffaeb18c="" x1="18.36" x2="19.78" y1="18.36" y2="19.78"></line>
+    <line data-v-ffaeb18c="" x1="1" x2="3" y1="12" y2="12"></line>
+    <line data-v-ffaeb18c="" x1="21" x2="23" y1="12" y2="12"></line>
+    <line data-v-ffaeb18c="" x1="4.22" x2="5.64" y1="19.78" y2="18.36"></line>
+    <line data-v-ffaeb18c="" x1="18.36" x2="19.78" y1="5.64" y2="4.22"></line>
+  </g>
+</svg>
