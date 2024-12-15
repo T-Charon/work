@@ -1,41 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
+  <link rel="stylesheet" href="./index-calendar.css">
 </head>
-<style>
-  .container {
-    width: 200px;
-    margin-top: 50px;
-    margin-left: auto;
-    margin-right: auto;
-    text-align: left;
-  }
-
-  a {
-    font-size: 20px;
-    text-decoration: none;  /* 去掉下划线 */
-    color: #007BFF;
-  }
-
-  div {
-    margin-bottom: 20px;   /* 行间距 */
-  }
-</style>
-
 <body>
-  <div class="container">
-    <div><a href="./work1209/index.html">1209日作业</a></div>
-    <div><a href="./work1207/index.html">1207日作业</a></div>
-    <div><a href="./work1206/index.html">1206日作业</a></div>
-    <div><a href="./work1205/index.html">1205日作业</a></div>
-    
-    
+  <h1>点击查看作业</h1>
+  <div class="calendar">
+    <div class="calendar_bar">
+      <div class="calendar_bar_check_pre">上月</div>
+      <div class="calendar_bar_date">12月14日</div>
+      <div class="calendar_bar_check_next">下月</div>
+    </div>
+    <div class="calendar_head">
+      <div>日</div>
+      <div>一</div>
+      <div>二</div>
+      <div>三</div>
+      <div>四</div>
+      <div>五</div>
+      <div>六</div>
+    </div>
+    <div class="calendar_body"> 
+    </div>
   </div>
 
+  <script src="./common/calendarCommon.js"></script>
+  <!-- 再引入其他 JavaScript 文件 -->
+  <script src="./index-calendar.js"></script>
 </body>
 
-</html>
+</html> 
