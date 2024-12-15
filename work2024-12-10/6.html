@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>catflix登录页面</title>
+</head>
+<style>
+  .input-container {
+    position: relative;
+  }
+
+  .custom-placeholder {
+    position: absolute;
+    top: 40%;
+    left: 10px;
+    transform: translateY(-50%);
+    pointer-events: none; /* 确保点击占位符不会阻止用户点击输入框 */
+    transition: all 0.2s ease;
+    color: gray;
+  }
+
+  .input-field {
+    padding: 10px;
+    width: 200px;
+    margin-bottom: 10px;
+  }
+
+  .input-field:focus + .custom-placeholder,
+  .input-field:not(:placeholder-shown) + .custom-placeholder {
+    top: 10px;
+    font-size: 0.8em;
+    color: gray;
+  }
+</style>
+<body>
+  <div class="box">
+    <!-- <div class="close">
+      <img src="./img/delete.png">
+    </div> -->
+    <!-- <div>
+      <span>catfli</span>
+    </div> -->
+    <div class="input-container">
+      <input type="text" id="myInput" class="input-field" placeholder=" " />
+      <span class="custom-placeholder">userName</span>
+    </div>
+    <div class="input-container">
+      <input type="text"  class="input-field" placeholder=" " />
+      <span class="custom-placeholder">email</span>
+    </div>
+  </div>
+</body>
+
+
+</html>
