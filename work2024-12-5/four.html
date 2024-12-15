@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<script>
+  //4。找不同
+  /*
+  给定两个字符串 s 和 t ，它们只包含小写字母。字符串 t 由字符串 s 随机重排，然后在随机位置添加一个字母。请找出在 t 中被添加的字母。
+  示例 1:
+    输入: s ="abcd"，t="abcde'
+    输出: "e"
+    解释:'e’是那个被添加的字母。
+  示例 2
+    输入:s =""，t ="y"
+    输出:"y"
+   */
+  function findDiff(param1, param2) {
+    if (param1.trim().length === 0) return param2;
+    if (param2.trim().length === 0) return param1;
+    let str = param1.concat(param2);
+
+    let data = "";
+    for (let index = str.length - 1; index >= 0; index--) {
+      if (str.indexOf(str[index]) === str.lastIndexOf(str[index])) {
+        data = str[index];
+      }
+    }
+    return data;
+  }
+
+  console.log(findDiff("abcdb", "abcde")); // 输出: "e"
+  console.log(findDiff("", "y")); // 输出: "y"
+
+</script>
+
+<body>
+</body>
+
+</html>

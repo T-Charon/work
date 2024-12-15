@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>循环精灵图背景</title>
+</head>
+
+<body>
+  <div class="container">
+    <ul id="box">
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+    </ul>
+  </div>
+</body>
+
+<script>
+  function show() {
+    var lis = document.querySelectorAll("li");
+    for (var i = 0; i < lis.length; i++) {
+      var index = i * 44;
+      lis[i].style.backgroundPosition = "0-" + index + "px";
+    }
+  }
+  show();
+</script>
+
+<style>
+  .container {
+    width: 200px;
+    height: 200px
+  }
+
+  .container ul {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .container ul li {
+    width: 40px;
+    height: 40px;
+    background-image: url(./src/sprite.png);
+    list-style: none;
+    background-repeat: no-repeat;   /* 是否重复 */
+    
+    
+  }
+</style>
+
+</html>

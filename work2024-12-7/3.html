@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>十进制转二进制</title>
+  <script src="./common.js"></script>
+</head>
+
+<body>
+  <div style="height: 50px; margin-top: 20px;">
+    <p ><label>进 制 转 换</label></p>
+  </div>
+  <div style="margin-top: 20px;">
+    <textarea id="text" placeholder="请输入要转换的数"></textarea>
+  </div>
+  <div style="margin-top: 15px; margin-left: -100px; gap: 20px;"">
+    <label>请选择转换格式:</label>
+    <select id="codeSelect">
+      <option value="1">十进制转二进制</option>
+      <option value="2">二进制转十进制</option>
+    </select>
+    <button onclick="transNum()">转换</button>
+  </div>
+  <div style="margin-top: 20px;">
+    <textarea id="answer"></textarea>
+  </div>
+</body>
+
+<script>
+  function transNum() {
+    var inputValue = document.querySelector("#text").value;
+    var type = document.querySelector("#codeSelect").value;
+    var result = "";
+    switch (type) {
+      case "2":
+        if (!inputValue.match(/^[01]+$/)) {
+          alert("请输入一个有效二进制数！");
+          return;
+        }
+        result = transe10(inputValue);
+        break;
+
+      default:
+        if (!inputValue.match(/\d+/)) {
+          alert("请输入一个有效的十进制数！");
+          return;
+        }
+        result = transe2(parseInt(inputValue), "");
+        break;
+    }
+
+    document.querySelector("#answer").innerText = result;
+
+  }
+</script>
+<style>
+   div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  textarea {
+    outline: none;
+    width: 400px;
+    height: 100px;
+    resize: none;
+    border-color: #c0c2c5;
+  }
+  /* 当 textarea 获得焦点时的样式 */
+  textarea:focus {
+    outline: none;
+    border-color: #007BFF;
+    /* 点击时边框颜色变亮 */
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+    /* 添加轻微的阴影效果 */
+  }
+
+ 
+  p {
+    text-align: center;
+    font-size: 50px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    color: rgb(225, 32, 32);
+  }
+</style>
+
+</html>

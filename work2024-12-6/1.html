@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>分时问候</title>
+</head>
+
+<body>
+  <div id="container">
+    <div>
+      <h1 id="message"></h1>
+    </div>
+    <div><img id="srcDiv"></div>
+  </div>
+
+</body>
+<script>
+  function show() {
+    var srcDiv = document.querySelector("img")
+    var messDiv = document.getElementById("message")
+    var message = "";
+    var srcAddr = ""
+    var currentHour = new Date().getHours();
+    if (currentHour < 12) {
+      message = "早上好";
+      srcAddr = "./src/1.png";
+    }
+    else if (12 <= currentHour && currentHour < 18) {
+      message = "下午好";
+      srcAddr = "./src/2.png"
+    } else {
+      message = "晚上好"
+      srcAddr = "./src/3.png";
+    }
+    srcDiv.setAttribute('src', srcAddr);
+    messDiv.innerHTML = message;
+  }
+  show();
+</script>
+
+<style>
+  /* 设置外层容器为 Flexbox 布局 */
+  #container {
+    display: flex;
+    flex-direction: column;   /* 垂直排列子元素 */
+    justify-content: center;  /* 垂直居中 */
+    align-items: center;      /* 水平居中 */
+    height: 100vh;            /* 使容器高度占满整个视口 */
+    width: 100%;              /* 使容器宽度占满整个视口 */
+    gap: 20px;                /* 子元素之间的间距 */
+  }
+
+  /* 设置图片的最大宽度和高度，并保持比例 */
+  #srcDiv {
+    max-width: 100%;          /* 图片最大宽度为容器的 100% */
+    max-height: 100%;         /* 图片最大高度为容器的 100% */
+    object-fit: contain;      /* 保持图片比例并适应容器 */
+  }
+
+  /* 设置消息文本的样式 */
+  #message {
+    text-align: center;       /* 文本居中 */
+  }
+</style>
+
+</html>

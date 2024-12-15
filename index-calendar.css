@@ -147,17 +147,3 @@ body {
   position: relative;
 }
 
-h1 {
-  left: 0;
-  animation-timing-function:linear;
-  animation-iteration-count: infinite;
-  animation-duration: 10s;
-  animation-fill-mode: forwards;
-  animation-name: a;
-}
-
-@keyframes a {
-  to {
-    transform: translateX(calc(100vw - 100%));
-  }
-}

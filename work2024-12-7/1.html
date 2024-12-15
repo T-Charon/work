@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>字符串转对象</title>
+</head>
+
+<body>
+  <p>
+    < img class="this is  picture" style="background-color: aliceblue; " alt="图片"
+      src="https://img0.baidu.com/it/u=2931243091,718249849&fm=253&fmt=auto&app=120&f=JPEG?w=569&h=427">
+  </p>
+  <div style="width: 100%; height: 200px;">
+
+    <textarea id="text"
+      placeholder='请输入HTML字符串例如：< img class  =  "this is  picture"  style  =  "background-color: aliceblue; "   alt =  "图片" src="https://img0.baidu.com/it/u=2931243091,718249849&fm=253&fmt=auto&app=120&f=JPEG?w=569&h=427" >'></textarea>
+    <button onclick="transHTML()">转换</button>
+  </div>
+  <div id="d"></div>
+
+</body>
+<script>
+  function transHTML() {
+    var str = document.querySelector("#text").value;
+    //var str ='< img class  =  "this is  picture"  style  =  "background-color: aliceblue; "   alt =  "图片" src="https://img0.baidu.com/it/u=2931243091,718249849&fm=253&fmt=auto&app=120&f=JPEG?w=569&h=427" >';
+    // 移除<后的空格
+    str = str.replace(/<\s+/g, "<");
+    console.log(str);
+
+    // 创建元素节点
+    var div = document.querySelector("#d");
+    div.innerHTML = str;
+
+    var result = {};
+    var attrArr = [];
+    var valueArr = {};
+
+    // 获取img DOM对象
+    var childrenArr = div.children[0];
+    result.tagName = childrenArr.tagName
+    // 获取img标签的属性
+    var attrArr = childrenArr.getAttributeNames();
+    for (var i = 0; i < attrArr.length; i++) {
+      let attr = attrArr[i];
+      valueArr[attr]= childrenArr.getAttribute(attr)
+    }
+    result.attrs = valueArr;
+    console.dir(result)
+  }
+</script>
+<style>
+  div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+  }
+
+  textarea {
+    width: 300px;
+    height: 150px;
+    border: 1px solid #8c8c90;
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 16px;
+    resize: none;
+    /* 禁止修改大小 */
+  }
+
+  /* 当 textarea 获得焦点时的样式 */
+  textarea:focus {
+    outline: none;
+    border-color: #007BFF;
+    /* 点击时边框颜色变亮 */
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+    /* 添加轻微的阴影效果 */
+  }
+</style>
+
+</html>

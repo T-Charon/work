@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<script>
+  // 1.杨辉三角转数组
+  /* 
+    给定一个非负整数numRows,生成一个杨辉三角的前numRows行，
+    在杨辉三角中除了第一列和最后一列的值都是1，
+    其他位置的值都是左上角和右上角的值的和
+    例如: numRows =5 →[[1],[1,1][1,2,1],[1,3,3,1],[1,4,6,4,1]]
+  */
+  function printPascalsTriangle(rows) {
+    let arr = [];
+    for (let i = 0; i < rows; i++) {
+      // 填充数组
+      arr[i] = new Array(i + 1).fill(1);
+      for (let j = 1; j < i; j++) {
+        arr[i][j] = arr[i - 1][j - 1] + arr[i - 1][j];
+      }
+    }
+    return arr;
+  }
+  console.log(printPascalsTriangle(5));
+</script>
+
+<body>
+</body>
+
+</html>

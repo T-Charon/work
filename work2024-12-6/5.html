@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>复选框</title>
+</head>
+
+<body>
+  <div id="c">
+    <label><input type="checkbox"><span>1</span></label>
+    <label> <input type="checkbox"><span>2</span></label>
+    <label> <input type="checkbox"><span>3</span></label>
+  </div>
+  <div id="b">
+    <button onclick="allSelect()">全选</button>
+    <button onclick="none()">不选</button>
+    <button onclick="reverse()">反选</button>
+  </div>
+
+</body>
+
+<script>
+  var checkboxes = document.querySelectorAll('input');
+  function allSelect() {
+    console.log("全选");
+    for (var i = 0; i < checkboxes.length; i++) {
+      checkboxes[i].checked = true;
+    }
+  }
+  function none() {
+    console.log("不选");
+    for (var i = 0; i < checkboxes.length; i++) {
+      checkboxes[i].checked = false;
+    }
+  }
+  function reverse() {
+    console.log("反选");
+    for (var i = 0; i < checkboxes.length; i++) {
+      checkboxes[i].checked = !checkboxes[i].checked;
+    }
+  }
+</script>
+
+
+<style>
+  #c {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  #b {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    /* 按钮之间的间距 */
+  }
+</style>
+
+</html>
