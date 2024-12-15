@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>右上角为中心切换背景</title>
+</head>
+<style>
+  @property --range {
+    syntax: "<percentage>";
+    inherits: true;
+    initial-value: 0%;
+  }
+
+  @property --x {
+    syntax: "<length>";
+    inherits: true;
+    initial-value: 0;
+  }
+
+  @property --y {
+    syntax: "<length>";
+    inherits: true;
+    initial-value: 0;
+  }
+
+  :root {
+    --range: 0%;
+    --x: 0;
+    --y: 0;
+  }
+
+  * {
+    margin: 0;
+    padding: 0;
+  }
+ 
+  body {
+    width: 100vw;
+    height: 100vh;
+    transition: all ease-in-out 1s;
+    --x :0;   
+    --y: 0;
+    background-image: radial-gradient(circle at var(--x) var(--y),
+      #6d9ef8 0%,
+      #6d9ef8 var(--range),
+      rgb(251, 238, 238) var(--range),
+      rgb(251, 238, 238) 100%);
+    animation-duration: 3s;
+    animation-fill-mode: forwards;
+  }
+
+  /* 背景颜色变换 */
+  @keyframes dark{
+    to {
+      --range: 100%
+    }
+  }
+
+  @keyframes light{
+    to {
+      --range: 0%
+    }
+  }
+
+  .color-move {
+    width: 200px;
+    height: 35px;
+    background-color: #333;
+    border-radius: 50px;
+    top: 50px;
+    display: flex;
+    gap: 10px;
+    animation-duration: 2s;
+    animation-fill-mode: forwards;
+    animation-delay: inherit;
+    right: 10px;
+    position: fixed;
+  }
+
+  /* 颜色框展开 */
+  @keyframes move {
+    to {
+      transform: translateX(-150px);
+    }
+  }
+
+  @keyframes back {
+    from {
+      transform: translateX(-150px);
+    }
+
+    to {
+      transform: translateX(0px);
+      transition: ease-in 300ms;
+    }
+  }
+
+  .color-move li {
+    width: 20px;
+    height: 20px;
+    border-radius: 100%;
+    position: relative;
+    top: 8px;
+    left: 5px;
+  }
+
+  .color-move li:hover {
+    transform: scale(1.2); 
+  }
+
+  .color-move li:nth-child(1) {
+    background-color: #ccc;
+  }
+
+  .color-move li:nth-child(2) {
+    background-color: purple;
+  }
+
+  .color-move li:nth-child(3) {
+    background-color: #f27b7b;
+  }
+
+  .color-move li:nth-child(4) {
+    background-color: rgb(129, 199, 239);
+  }
+
+  .color-move li:nth-child(5) {
+    background-color: rgb(149, 158, 163);
+  }
+
+  .contains {
+    width: 200px;
+    height: 35px;
+    background-color: #333;
+    display: flex;
+    line-height: 35px;
+    justify-content: space-evenly;
+    right: 10px;
+    position: fixed;
+    top: 50px;
+    border-radius: 50px;
+    overflow: hidden;
+  }
+
+  li {
+    font-size: 13px;
+    color: #faf5f5;
+    font-weight: 300px;
+    list-style: none;
+    cursor: pointer;
+  }
+
+  #checkbox-color {
+    display: none;
+  }
+</style>
+
+<body>
+  <div>
+    <ul class="color-move">
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+    </ul>
+    <ul class="contains">
+      <input type="checkbox" id="checkbox-color">
+      <label for="checkbox-color" class="color">
+        <li>颜色</li>
+      </label>
+      <li>位置</li>
+      <li>文字</li>
+      <li>切换</li>
+    </ul>
+  </div>
+</body>
+
+<script>
+  document.querySelector('input').addEventListener('click', function () {
+    document.querySelector('.color-move').style.animationName = this.checked ? 'move' : "back"
+  });
+  var isDark = true;
+  document.querySelector('.contains li:nth-child(5)').addEventListener('click', function (e) {
+    console.log(this)
+    document.body.style.setProperty("--x", `${e.x}px`);
+    document.body.style.setProperty("--y", `${e.y}px`);
+    if (isDark) {
+      document.body.style.setProperty("--range", "0");
+      document.body.style.animationName = 'dark';
+    } else {
+      document.body.style.setProperty("--range", "100%");
+      document.body.style.animationName = 'light';
+    }
+    isDark = !isDark;
+  })
+
+</script>
+
+</html>
