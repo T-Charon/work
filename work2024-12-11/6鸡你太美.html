@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>鸡你太美</title>
+</head>
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+  }
+
+  .sing-jump-rapper {
+    margin: auto;
+    width: 1200px;
+    height: 540px;
+    background-image: url("./img/cxk.png");
+    background-size: 1200px;
+    animation-name: identifier;
+    animation-duration: 3s;
+    animation-fill-mode: forwards;
+    animation-timing-function: steps(10);
+    animation-iteration-count: infinite;
+  }
+
+  @keyframes identifier {
+    from {
+      background-position: 0px 0px;
+    }
+
+    to {
+      background-position: 0px -540px;
+
+    }
+  }
+</style>
+
+<body>
+  <div class="sing-jump-rapper"></div>
+</body>
+
+</html>
