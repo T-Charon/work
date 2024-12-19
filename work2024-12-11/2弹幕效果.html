@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>弹幕效果</title>
+</head>
+<style>
+  * {
+    margin: 0;
+    bottom: 0;
+  }
+
+  .box {
+    height: 100vh;
+    width: 100vw;
+    position: relative;
+  }
+
+  .content {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    height: 50px;
+    width: 200px;
+    background-color: aqua;
+    border-radius: 25px;
+    overflow: hidden;
+  }
+
+  ul {
+
+    position: absolute;
+    left: 3%;
+    animation-name: ul_move;
+    animation-duration: 10s;
+    animation-fill-mode: forwards;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    list-style-type: none;
+  }
+
+  li {
+    font-size: 30px;
+    margin-bottom: 4px;
+    color: palevioletred;
+  }
+
+  @keyframes ul_move {
+    from {
+      transform: translateY(0);
+    }
+
+    to {
+      transform: translateY(240px);
+    }
+  }
+</style>
+
+<body>
+  <div class="box">
+    <div class="content">
+      <ul class="move">
+        <li>小王123</li>
+        <li>小王456</li>
+        <li>小王789</li>
+        <li>小李123</li>
+        <li>小李456</li>
+        <li>小李789</li>
+      </ul>
+    </div>
+  </div>
+
+</body>
+
+</html>
