@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>弹框效果</title>
+</head>
+
+<style>
+  * {
+  margin: 0;
+  padding: 0;
+}
+
+html body {
+  height: 100vh;
+  width: 100vw;
+}
+
+.box {
+  left: 50%;
+  top: 50%;
+  position: relative;
+  width: 150px;
+  height: 50px;
+  background-color: blueviolet;
+  border-radius: 25px;
+  cursor: pointer;
+}
+
+#box_check {
+  display: none;
+}
+
+.box_msg,
+p {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+}
+
+.popUp {
+  position: relative;
+  width: 200px;
+  height: 200px;
+
+  background-color: rgb(84, 117, 236);
+  display: none;
+  animation-name: a;
+  animation-duration: 0.5s;
+  animation-timing-function: ease-out;
+}
+
+@keyframes a {
+  0% {
+    transform: translate(0%, 35%) scale(1);
+  }
+  30% {
+    transform: translate(0%, -40%) scale(1.1);
+  }
+  60% {
+    transform: translate(0%, -50%) ;
+  }
+  100% {
+    transform: translate(0%, -45%);
+  }
+}
+
+img {
+  width: 38px;
+  height: 38px;
+  position: absolute;
+  bottom: -15px;
+  left: 40%;
+}
+
+#box_check:checked ~ .popUp {
+  display: flex;
+}
+
+/* p{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); 
+  color: white;
+} */
+
+</style>
+<body>
+  <div class="box">
+    <input type="checkbox"  id="box_check">
+    <label for="box_check" class="box_msg">唤起弹框</label>
+    <div class="popUp">
+      <p>我是弹框</p>
+      <label for="box_check" class="popUp_close"><img src="./img/关闭实心.png" alt=""></label>
+      
+    </div>
+    
+  </div>
+
+  
+</body>
+
+</html>
